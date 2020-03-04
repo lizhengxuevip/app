@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zh.dao.LoginDao">
+
+    <!--登录/获取修改用户参数-->
+    <select id="login" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+      select * from sysuser
+      where
+          uname = #{uname}
+          <if test="password != null">
+              AND password = #{password}
+          </if>
+    </select>
+    <!--新增用户-->
+    <insert id="addSysuser" parameterType="java.util.HashMap">
+        insert into sysuser(userid,username,userpwd,userstate) values(#{userid},#{username},#{userpwd},#{userstate})
+    </insert>
+    <!--更新用户信息-->
+    <update id="updateSysuser" parameterType="java.util.HashMap">
+        update sysuser set  username = #{username} , userpwd = #{userpwd} where userid = #{userid}
+    </update>
+
+    <delete id="deleteSysuser" parameterType="java.util.HashMap">
+        delete  from sysuser where userid = #{uid}
+    </delete>
+</mapper>
