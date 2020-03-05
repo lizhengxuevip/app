@@ -10,4 +10,9 @@ public class PageController {
     public String logo(){
         return "/view/logo";
     }
+
+    @RequestMapping("main.do")
+    public String main(){
+        return "/view/main";
+    }
 }
